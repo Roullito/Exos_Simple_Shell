@@ -29,10 +29,10 @@ ssize_t _getline(char **lineptr, size_t *n, int fd)
 	while (1)
 	{
 		r = read(fd, &c, 1);
-		if (r == -1)
+		if (r < 0)
 			return (-1);
 		if (r == 0)
-			break;
+			return (-1);
 
 		if (i >= (*n - 1))
 		{
